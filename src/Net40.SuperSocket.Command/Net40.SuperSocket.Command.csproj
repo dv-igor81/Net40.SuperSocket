@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
+            Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{65569280-3B85-489C-A998-AB182B0650BD}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace></RootNamespace>
+        <AssemblyName>Net40.SuperSocket.Command</AssemblyName>
+        <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+        <LangVersion>11</LangVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="System"/>
+        <Reference Include="System.Core"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="AsyncCommandFilter.cs" />
+        <Compile Include="CommandAttribute.cs" />
+        <Compile Include="CommandExecutingContext.cs" />
+        <Compile Include="CommandFilter.cs" />
+        <Compile Include="CommandMetadata.cs" />
+        <Compile Include="CommandMiddleware.cs" />
+        <Compile Include="CommandMiddlewareExtensions.cs" />
+        <Compile Include="CommandOptions.cs" />
+        <Compile Include="CommandWrap.cs" />
+        <Compile Include="ICommand.cs" />
+        <Compile Include="ICommandSource.cs" />
+        <Compile Include="IPackageMapper.cs" />
+        <Compile Include="JsonCommand.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs"/>
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Net40.PlatformExtension\src\Net40.Microsoft.Extensions.Configuration.Abstractions\Net40.Microsoft.Extensions.Configuration.Abstractions.csproj">
+        <Project>{a872ecc2-e8d5-4b78-a4ef-56d56dfacb40}</Project>
+        <Name>Net40.Microsoft.Extensions.Configuration.Abstractions</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.PlatformExtension\src\Net40.Microsoft.Extensions.DependencyInjection.Abstractions\Net40.Microsoft.Extensions.DependencyInjection.Abstractions.csproj">
+        <Project>{078c84cd-4107-439c-82d0-3624544e89e2}</Project>
+        <Name>Net40.Microsoft.Extensions.DependencyInjection.Abstractions</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.PlatformExtension\src\Net40.Microsoft.Extensions.Hosting.Abstractions\Net40.Microsoft.Extensions.Hosting.Abstractions.csproj">
+        <Project>{caf1427c-8912-46c0-accc-ecba8949e37e}</Project>
+        <Name>Net40.Microsoft.Extensions.Hosting.Abstractions</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.PlatformExtension\src\Net40.Microsoft.Extensions.Logging.Abstractions\Net40.Microsoft.Extensions.Logging.Abstractions.csproj">
+        <Project>{f0ecdf34-47a1-4b02-919c-3369477f16dc}</Project>
+        <Name>Net40.Microsoft.Extensions.Logging.Abstractions</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.PlatformExtension\src\Net40.Microsoft.Extensions.Options.ConfigurationExtensions\Net40.Microsoft.Extensions.Options.ConfigurationExtensions.csproj">
+        <Project>{ab9a3b6a-6374-49d3-8c7f-cda1d75d2ca5}</Project>
+        <Name>Net40.Microsoft.Extensions.Options.ConfigurationExtensions</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.PlatformExtension\src\Net40.Microsoft.Extensions.Options\Net40.Microsoft.Extensions.Options.csproj">
+        <Project>{89fe2a62-6d84-4281-86dc-83953f4eb84e}</Project>
+        <Name>Net40.Microsoft.Extensions.Options</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.PlatformExtension\src\Net40.System.Private.CoreLib\Net40.System.Private.CoreLib.csproj">
+        <Project>{0be8ac03-9637-4be1-8552-086be1bde21a}</Project>
+        <Name>Net40.System.Private.CoreLib</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.PlatformExtension\src\Net40.System.Text.Json\Net40.System.Text.Json.csproj">
+        <Project>{fbf58ef3-0667-4b4e-83d2-7f6316b82f5f}</Project>
+        <Name>Net40.System.Text.Json</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.Theraot.Core\src\Net40.Theraot.Core\Net40.Theraot.Core.csproj">
+        <Project>{868d7589-87b6-47ad-8cc6-e4f856199ff2}</Project>
+        <Name>Net40.Theraot.Core</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\Net40.SuperSocket.ProtoBase\Net40.SuperSocket.ProtoBase.csproj">
+        <Project>{3a1108ff-afbe-4f32-9455-676d413b1883}</Project>
+        <Name>Net40.SuperSocket.ProtoBase</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\Net40.SuperSocket.Server.Abstractions\Net40.SuperSocket.Server.Abstractions.csproj">
+        <Project>{0e62eab3-8489-48fc-b892-c1efc0e53973}</Project>
+        <Name>Net40.SuperSocket.Server.Abstractions</Name>
+      </ProjectReference>
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+
+</Project>

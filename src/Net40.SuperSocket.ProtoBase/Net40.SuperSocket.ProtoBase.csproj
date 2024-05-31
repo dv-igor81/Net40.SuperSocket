@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
+            Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{3A1108FF-AFBE-4F32-9455-676D413B1883}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace></RootNamespace>
+        <AssemblyName>Net40.SuperSocket.ProtoBase</AssemblyName>
+        <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+        <LangVersion>11</LangVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="System"/>
+        <Reference Include="System.Core"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="BeginEndMarkPipelineFilter.cs" />
+        <Compile Include="CommandLinePipelineFilter.cs" />
+        <Compile Include="DefaultPipelineFilterFactory.cs" />
+        <Compile Include="DelegatePipelineFilterFactory.cs" />
+        <Compile Include="Extensions.cs" />
+        <Compile Include="FixedHeaderPipelineFilter.cs" />
+        <Compile Include="FixedSizePipelineFilter.cs" />
+        <Compile Include="IKeyedPackageInfo.cs" />
+        <Compile Include="IPackageDecoder.cs" />
+        <Compile Include="IPackageEncoder.cs" />
+        <Compile Include="IPackagePartReader.cs" />
+        <Compile Include="IPipelineFilter.cs" />
+        <Compile Include="IPipelineFilterFactory.cs" />
+        <Compile Include="IStringPackage.cs" />
+        <Compile Include="LinePipelineFilter.cs" />
+        <Compile Include="PackagePartsPipelineFilter.cs" />
+        <Compile Include="PipelineFilterBase.cs" />
+        <Compile Include="PipelineFilterFactoryBase.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="ProtocolException.cs" />
+        <Compile Include="SequenceSegment.cs" />
+        <Compile Include="StringPackageInfo.cs" />
+        <Compile Include="TerminatorPipelineFilter.cs" />
+        <Compile Include="TerminatorTextPipelineFilter.cs" />
+        <Compile Include="TextPackageInfo.cs" />
+        <Compile Include="TransparentPipelineFilter.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Net40.PlatformExtension\src\Net40.System.Private.CoreLib\Net40.System.Private.CoreLib.csproj">
+        <Project>{0be8ac03-9637-4be1-8552-086be1bde21a}</Project>
+        <Name>Net40.System.Private.CoreLib</Name>
+      </ProjectReference>
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+
+</Project>
