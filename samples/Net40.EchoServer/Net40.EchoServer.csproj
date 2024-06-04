@@ -58,7 +58,7 @@
         <Project>{60c0e198-24c9-46b8-981f-413dae152bbd}</Project>
         <Name>Net40.Microsoft.Extensions.Logging</Name>
       </ProjectReference>
-      <ProjectReference Include="..\..\..\Net40.PlatformExtension\src\Net40.System.Private.CoreLib\Net40.System.Private.CoreLib.csproj">
+      <ProjectReference Include="..\..\..\Net40.System.Private.CoreLib\src\Net40.System.Private.CoreLib\Net40.System.Private.CoreLib.csproj">
         <Project>{0be8ac03-9637-4be1-8552-086be1bde21a}</Project>
         <Name>Net40.System.Private.CoreLib</Name>
       </ProjectReference>

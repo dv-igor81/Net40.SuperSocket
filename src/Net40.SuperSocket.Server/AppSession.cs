@@ -15,7 +15,7 @@ namespace SuperSocket.Server
     {
         private IConnection _connection;
 
-        protected internal IConnection Connection
+        private IConnection Connection
         {
             get { return _connection; }
         }
@@ -46,27 +46,15 @@ namespace SuperSocket.Server
 
         public IServerInfo Server { get; private set; }
 
-        IConnection IAppSession.Connection
-        {
-            get { return _connection; }
-        }
+        IConnection IAppSession.Connection => _connection;
 
         public object DataContext { get; set; }
 
-        public EndPoint RemoteEndPoint
-        {
-            get { return _connection?.RemoteEndPoint; }
-        }
+        public EndPoint RemoteEndPoint => _connection?.RemoteEndPoint;
 
-        public EndPoint LocalEndPoint
-        {
-            get { return _connection?.LocalEndPoint; }
-        }
+        public EndPoint LocalEndPoint => _connection?.LocalEndPoint;
 
-        public DateTimeOffset LastActiveTime
-        {
-            get { return _connection?.LastActiveTime ?? DateTimeOffset.MinValue; }
-        }
+        public DateTimeOffset LastActiveTime => _connection?.LastActiveTime ?? DateTimeOffset.MinValue;
 
         public event AsyncEventHandler Connected;
 

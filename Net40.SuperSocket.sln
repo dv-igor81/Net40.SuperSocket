@@ -10,8 +10,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net40.SuperSocket.ProtoBase
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net40.Theraot.Core", "..\Net40.Theraot.Core\src\Net40.Theraot.Core\Net40.Theraot.Core.csproj", "{868D7589-87B6-47AD-8CC6-E4F856199FF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net40.System.Private.CoreLib", "..\Net40.PlatformExtension\src\Net40.System.Private.CoreLib\Net40.System.Private.CoreLib.csproj", "{0BE8AC03-9637-4BE1-8552-086BE1BDE21A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net40.SuperSocket.Primitives", "src\Net40.SuperSocket.Primitives\Net40.SuperSocket.Primitives.csproj", "{829CC9E1-5DCE-44A0-807B-BF4DCF4FFFA8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net40.Microsoft.Extensions.Logging.Abstractions", "..\Net40.PlatformExtension\src\Net40.Microsoft.Extensions.Logging.Abstractions\Net40.Microsoft.Extensions.Logging.Abstractions.csproj", "{F0ECDF34-47A1-4B02-919C-3369477F16DC}"
@@ -82,6 +80,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net40.SuperSocket.Command",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net40.Microsoft.Extensions.DependencyInjection.Abstractions", "..\Net40.PlatformExtension\src\Net40.Microsoft.Extensions.DependencyInjection.Abstractions\Net40.Microsoft.Extensions.DependencyInjection.Abstractions.csproj", "{078C84CD-4107-439C-82D0-3624544E89E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net40.ConfigSample", "samples\Net40.ConfigSample\Net40.ConfigSample.csproj", "{BF354EA0-C947-418B-BE0B-EF5D6E48B2FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net40.System.Private.CoreLib", "..\Net40.System.Private.CoreLib\src\Net40.System.Private.CoreLib\Net40.System.Private.CoreLib.csproj", "{0BE8AC03-9637-4BE1-8552-086BE1BDE21A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{C8668F74-BAB5-484E-847B-CE4B20B81600}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,10 +103,6 @@ Global
 		{868D7589-87B6-47AD-8CC6-E4F856199FF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{868D7589-87B6-47AD-8CC6-E4F856199FF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{868D7589-87B6-47AD-8CC6-E4F856199FF2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0BE8AC03-9637-4BE1-8552-086BE1BDE21A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0BE8AC03-9637-4BE1-8552-086BE1BDE21A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0BE8AC03-9637-4BE1-8552-086BE1BDE21A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0BE8AC03-9637-4BE1-8552-086BE1BDE21A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{829CC9E1-5DCE-44A0-807B-BF4DCF4FFFA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{829CC9E1-5DCE-44A0-807B-BF4DCF4FFFA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{829CC9E1-5DCE-44A0-807B-BF4DCF4FFFA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -240,11 +243,18 @@ Global
 		{078C84CD-4107-439C-82D0-3624544E89E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{078C84CD-4107-439C-82D0-3624544E89E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{078C84CD-4107-439C-82D0-3624544E89E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF354EA0-C947-418B-BE0B-EF5D6E48B2FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF354EA0-C947-418B-BE0B-EF5D6E48B2FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF354EA0-C947-418B-BE0B-EF5D6E48B2FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF354EA0-C947-418B-BE0B-EF5D6E48B2FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BE8AC03-9637-4BE1-8552-086BE1BDE21A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BE8AC03-9637-4BE1-8552-086BE1BDE21A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BE8AC03-9637-4BE1-8552-086BE1BDE21A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BE8AC03-9637-4BE1-8552-086BE1BDE21A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3A1108FF-AFBE-4F32-9455-676D413B1883} = {51150D12-D549-4771-A0BE-785B77911266}
 		{868D7589-87B6-47AD-8CC6-E4F856199FF2} = {EECF4F9F-C144-432A-A225-59CF91B01F44}
-		{0BE8AC03-9637-4BE1-8552-086BE1BDE21A} = {EECF4F9F-C144-432A-A225-59CF91B01F44}
 		{829CC9E1-5DCE-44A0-807B-BF4DCF4FFFA8} = {51150D12-D549-4771-A0BE-785B77911266}
 		{F0ECDF34-47A1-4B02-919C-3369477F16DC} = {EECF4F9F-C144-432A-A225-59CF91B01F44}
 		{89FE2A62-6D84-4281-86DC-83953F4EB84E} = {EECF4F9F-C144-432A-A225-59CF91B01F44}
@@ -280,5 +290,7 @@ Global
 		{C8C54D19-82E8-4E66-AD0F-9F9A4CFFF859} = {E389CA31-C53E-4B50-B4B0-928B974C4874}
 		{65569280-3B85-489C-A998-AB182B0650BD} = {51150D12-D549-4771-A0BE-785B77911266}
 		{078C84CD-4107-439C-82D0-3624544E89E2} = {EECF4F9F-C144-432A-A225-59CF91B01F44}
+		{BF354EA0-C947-418B-BE0B-EF5D6E48B2FF} = {E389CA31-C53E-4B50-B4B0-928B974C4874}
+		{0BE8AC03-9637-4BE1-8552-086BE1BDE21A} = {EECF4F9F-C144-432A-A225-59CF91B01F44}
 	EndGlobalSection
 EndGlobal

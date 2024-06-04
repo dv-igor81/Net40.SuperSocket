@@ -78,13 +78,13 @@
         <Project>{89fe2a62-6d84-4281-86dc-83953f4eb84e}</Project>
         <Name>Net40.Microsoft.Extensions.Options</Name>
       </ProjectReference>
-      <ProjectReference Include="..\..\..\Net40.PlatformExtension\src\Net40.System.Private.CoreLib\Net40.System.Private.CoreLib.csproj">
-        <Project>{0be8ac03-9637-4be1-8552-086be1bde21a}</Project>
-        <Name>Net40.System.Private.CoreLib</Name>
-      </ProjectReference>
       <ProjectReference Include="..\..\..\Net40.PlatformExtension\src\Net40.System.Text.Json\Net40.System.Text.Json.csproj">
         <Project>{fbf58ef3-0667-4b4e-83d2-7f6316b82f5f}</Project>
         <Name>Net40.System.Text.Json</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.System.Private.CoreLib\src\Net40.System.Private.CoreLib\Net40.System.Private.CoreLib.csproj">
+        <Project>{0be8ac03-9637-4be1-8552-086be1bde21a}</Project>
+        <Name>Net40.System.Private.CoreLib</Name>
       </ProjectReference>
       <ProjectReference Include="..\..\..\Net40.Theraot.Core\src\Net40.Theraot.Core\Net40.Theraot.Core.csproj">
         <Project>{868d7589-87b6-47ad-8cc6-e4f856199ff2}</Project>

@@ -91,7 +91,7 @@
         <Project>{f0ecdf34-47a1-4b02-919c-3369477f16dc}</Project>
         <Name>Net40.Microsoft.Extensions.Logging.Abstractions</Name>
       </ProjectReference>
-      <ProjectReference Include="..\..\..\Net40.PlatformExtension\src\Net40.System.Private.CoreLib\Net40.System.Private.CoreLib.csproj">
+      <ProjectReference Include="..\..\..\Net40.System.Private.CoreLib\src\Net40.System.Private.CoreLib\Net40.System.Private.CoreLib.csproj">
         <Project>{0be8ac03-9637-4be1-8552-086be1bde21a}</Project>
         <Name>Net40.System.Private.CoreLib</Name>
       </ProjectReference>
