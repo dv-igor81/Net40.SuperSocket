@@ -1,5 +1,5 @@
 using System;
-using System.Net.Sockets;
+using System.Net.Sockets.Net40;
 
 namespace SuperSocket.Server.Abstractions.Connections
 {

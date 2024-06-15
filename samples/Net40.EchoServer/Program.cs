@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using SuperSocket;
 using SuperSocket.Connection;
 using SuperSocket.Server;
 using SuperSocket.Server.Abstractions;
@@ -17,10 +15,11 @@ namespace EchoServer
     {
         static async Task Main(string[] args)
         {
-            var host = SuperSocketHostBuilder.Create<TextPackageInfo, LinePipelineFilter>(args)
-                .UsePackageHandler(async (s, p) =>
+            var host = SuperSocketHostBuilder
+                .Create<TextPackageInfo, LinePipelineFilter>(args)
+                .UsePackageHandler(async (session, package) =>
                 {
-                    await s.SendAsync(Encoding.UTF8.GetBytes(p.Text + "\r\n"));
+                    await session.SendAsync(Encoding.UTF8.GetBytes(package.Text + "\r\n"));
                 })
                 .ConfigureSuperSocket(options =>
                 {

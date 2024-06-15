@@ -1,5 +1,5 @@
 using System;
-using System.Net;
+using System.Net.Net40;
 using System.Threading;
 using System.Threading.Tasks;
 using SuperSocket.Connection;

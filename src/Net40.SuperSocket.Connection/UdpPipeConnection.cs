@@ -1,8 +1,8 @@
 using System;
 using System.Buffers;
 using System.IO.Pipelines;
-using System.Net;
-using System.Net.Sockets;
+using System.Net.Net40;
+using System.Net.Sockets.Net40;
 using System.Threading;
 using System.Threading.Tasks;
 using SuperSocket.ProtoBase;

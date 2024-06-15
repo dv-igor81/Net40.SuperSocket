@@ -1,6 +1,6 @@
 using System.IO;
 using System.IO.Compression;
-using System.Net.Sockets;
+using System.Net.Sockets.Net40;
 using System.Threading;
 using System.Threading.Tasks;
 using SuperSocket.Connection;

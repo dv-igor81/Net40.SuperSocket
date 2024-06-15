@@ -70,6 +70,10 @@
         <Project>{5cfc9c33-4fe7-4b68-b140-4490471cfc5d}</Project>
         <Name>Net40.SuperSocket.Connection</Name>
       </ProjectReference>
+      <ProjectReference Include="..\..\src\Net40.SuperSocket.Http\Net40.SuperSocket.Http.csproj">
+        <Project>{c1680774-d4a4-47f3-9b19-fd7373eef353}</Project>
+        <Name>Net40.SuperSocket.Http</Name>
+      </ProjectReference>
       <ProjectReference Include="..\..\src\Net40.SuperSocket.Primitives\Net40.SuperSocket.Primitives.csproj">
         <Project>{829cc9e1-5dce-44a0-807b-bf4dcf4fffa8}</Project>
         <Name>Net40.SuperSocket.Primitives</Name>

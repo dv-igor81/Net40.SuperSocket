@@ -102,9 +102,17 @@
         <Project>{89fe2a62-6d84-4281-86dc-83953f4eb84e}</Project>
         <Name>Net40.Microsoft.Extensions.Options</Name>
       </ProjectReference>
-      <ProjectReference Include="..\..\..\Net40.PlatformExtension\src\Net40.System.IO.Pipelines\Net40.System.IO.Pipelines.csproj">
+      <ProjectReference Include="..\..\..\Net40.System.Private.CoreLib\src\Net40.System.IO.Pipelines\Net40.System.IO.Pipelines.csproj">
         <Project>{8989574a-b425-4d9a-ad08-e1104e05614e}</Project>
         <Name>Net40.System.IO.Pipelines</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.System.Private.CoreLib\src\Net40.System.Net.Primitives\Net40.System.Net.Primitives.csproj">
+        <Project>{c0e64cc2-926e-4dd4-a778-41153127c317}</Project>
+        <Name>Net40.System.Net.Primitives</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.System.Private.CoreLib\src\Net40.System.Net.Sockets\Net40.System.Net.Sockets.csproj">
+        <Project>{d6cbc98e-b6e4-4e14-b271-2ab743589f9e}</Project>
+        <Name>Net40.System.Net.Sockets</Name>
       </ProjectReference>
       <ProjectReference Include="..\..\..\Net40.System.Private.CoreLib\src\Net40.System.Private.CoreLib\Net40.System.Private.CoreLib.csproj">
         <Project>{0be8ac03-9637-4be1-8552-086be1bde21a}</Project>

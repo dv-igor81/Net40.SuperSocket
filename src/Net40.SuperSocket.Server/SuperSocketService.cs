@@ -90,11 +90,12 @@ namespace SuperSocket.Server
             _connectionListenerFactory = serviceProvider.GetService<IConnectionListenerFactory>();
             _sessionHandlers = serviceProvider.GetService<SessionHandlers>();
             _sessionFactory = serviceProvider.GetService<ISessionFactory>();
-            _packageHandlingContextAccessor = serviceProvider.GetService<IPackageHandlingContextAccessor<TReceivePackageInfo>>();
+            _packageHandlingContextAccessor =
+                serviceProvider.GetService<IPackageHandlingContextAccessor<TReceivePackageInfo>>();
             InitializeMiddlewares();
 
             var packageHandler = serviceProvider.GetService<IPackageHandler<TReceivePackageInfo>>()
-                ?? _middlewares.OfType<IPackageHandler<TReceivePackageInfo>>().FirstOrDefault();
+                                 ?? _middlewares.OfType<IPackageHandler<TReceivePackageInfo>>().FirstOrDefault();
 
             if (packageHandler == null)
             {
@@ -102,11 +103,13 @@ namespace SuperSocket.Server
             }
             else
             {
-                var errorHandler = serviceProvider.GetService<Func<IAppSession, PackageHandlingException<TReceivePackageInfo>, ValueTask<bool>>>()
-                    ?? OnSessionErrorAsync;
+                var errorHandler = serviceProvider
+                                       .GetService<Func<IAppSession, PackageHandlingException<TReceivePackageInfo>,
+                                           ValueTask<bool>>>()
+                                   ?? OnSessionErrorAsync;
 
                 _packageHandlingScheduler = serviceProvider.GetService<IPackageHandlingScheduler<TReceivePackageInfo>>()
-                    ?? new SerialPackageHandlingScheduler<TReceivePackageInfo>();
+                                            ?? new SerialPackageHandlingScheduler<TReceivePackageInfo>();
                 _packageHandlingScheduler.Initialize(packageHandler, errorHandler);
             }
         }
@@ -118,7 +121,8 @@ namespace SuperSocket.Server
 
         private bool AddConnectionListener(ListenOptions listenOptions, ServerOptions serverOptions)
         {
-            var listener = _connectionListenerFactory.CreateConnectionListener(listenOptions, serverOptions, _loggerFactory);
+            var listener =
+                _connectionListenerFactory.CreateConnectionListener(listenOptions, serverOptions, _loggerFactory);
             listener.NewConnectionAccept += OnNewConnectionAccept;
 
             if (!listener.Start())
@@ -153,7 +157,8 @@ namespace SuperSocket.Server
             }
             else
             {
-                _logger.LogWarning("No listener was defined, so this server only can accept connections from the ActiveConnect.");
+                _logger.LogWarning(
+                    "No listener was defined, so this server only can accept connections from the ActiveConnect.");
 
                 if (!AddConnectionListener(null, serverOptions))
                 {
@@ -181,8 +186,10 @@ namespace SuperSocket.Server
             var connectionListener = _connectionListeners.FirstOrDefault();
             if (connectionListener != null)
             {
-                using var cts = new CancellationTokenSource().CancelAfter(connectionListener.Options.ConnectionAcceptTimeOut);
-                var connection = await connectionListener.ConnectionFactory.CreateConnection(connectionSource, cts.Token);
+                using var cts =
+                    new CancellationTokenSource().CancelAfter(connectionListener.Options.ConnectionAcceptTimeOut);
+                var connection =
+                    await connectionListener.ConnectionFactory.CreateConnection(connectionSource, cts.Token);
                 await AcceptNewConnection(connection);
             }
         }
@@ -216,7 +223,8 @@ namespace SuperSocket.Server
                 }
                 catch (Exception e)
                 {
-                    _logger.LogError(e, $"The exception was thrown from the middleware {m.GetType().Name} when it is being shutdown.");
+                    _logger.LogError(e,
+                        $"The exception was thrown from the middleware {m.GetType().Name} when it is being shutdown.");
                 }
             }
         }
@@ -233,7 +241,8 @@ namespace SuperSocket.Server
 
                     if (!await middleware.RegisterSession(session))
                     {
-                        _logger.LogWarning($"A session from {session.RemoteEndPoint} was rejected by the middleware {middleware.GetType().Name}.");
+                        _logger.LogWarning(
+                            $"A session from {session.RemoteEndPoint} was rejected by the middleware {middleware.GetType().Name}.");
                         return false;
                     }
                 }
@@ -256,12 +265,14 @@ namespace SuperSocket.Server
                     {
                         if (!await middleware.UnRegisterSession(session))
                         {
-                            _logger.LogWarning($"The session from {session.RemoteEndPoint} was failed to be unregistered from the middleware {middleware.GetType().Name}.");
+                            _logger.LogWarning(
+                                $"The session from {session.RemoteEndPoint} was failed to be unregistered from the middleware {middleware.GetType().Name}.");
                         }
                     }
                     catch (Exception e)
                     {
-                        _logger.LogError(e, $"An unhandled exception occured when the session from {session.RemoteEndPoint} was being unregistered from the middleware {nameof(RegisterSessionInMiddlewares)}.");
+                        _logger.LogError(e,
+                            $"An unhandled exception occured when the session from {session.RemoteEndPoint} was being unregistered from the middleware {nameof(RegisterSessionInMiddlewares)}.");
                     }
                 }
             }
@@ -314,7 +325,7 @@ namespace SuperSocket.Server
             {
                 return closedHandler.Invoke(session, e);
             }
-            
+
             return ValueTaskEx.CompletedTask;
         }
 
@@ -391,26 +402,20 @@ namespace SuperSocket.Server
                 await FireSessionConnectedEvent(session);
 
                 var packageHandlingScheduler = _packageHandlingScheduler;
-
-#if NET6_0_OR_GREATER
-                using var cancellationTokenSource = GetPackageHandlingCancellationTokenSource(connection.ConnectionToken);
-#endif
-
+                
                 await foreach (var p in packageStream)
                 {
                     if (_packageHandlingContextAccessor != null)
                     {
-                        _packageHandlingContextAccessor.PackageHandlingContext = new PackageHandlingContext<IAppSession, TReceivePackageInfo>(session, p);
+                        _packageHandlingContextAccessor.PackageHandlingContext =
+                            new PackageHandlingContext<IAppSession, TReceivePackageInfo>(session, p);
                     }
+                    
+                    using var cancellationTokenSource =
+                        GetPackageHandlingCancellationTokenSource(connection.ConnectionToken);
 
-#if !NET6_0_OR_GREATER
-                    using var cancellationTokenSource = GetPackageHandlingCancellationTokenSource(connection.ConnectionToken);
-#endif
                     await packageHandlingScheduler.HandlePackage(session, p, cancellationTokenSource.Token);
-
-#if NET6_0_OR_GREATER
-                    cancellationTokenSource.TryReset();
-#endif
+                    
                 }
             }
             catch (Exception e)
@@ -419,14 +424,16 @@ namespace SuperSocket.Server
             }
         }
 
-        protected virtual CancellationTokenSource GetPackageHandlingCancellationTokenSource(CancellationToken cancellationToken)
+        protected virtual CancellationTokenSource GetPackageHandlingCancellationTokenSource(
+            CancellationToken cancellationToken)
         {
             var cancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
             cancellationTokenSource.CancelAfter(TimeSpan.FromSeconds(Options.PackageHandlingTimeOut));
             return cancellationTokenSource;
         }
 
-        protected virtual ValueTask<bool> OnSessionErrorAsync(IAppSession session, PackageHandlingException<TReceivePackageInfo> exception)
+        protected virtual ValueTask<bool> OnSessionErrorAsync(IAppSession session,
+            PackageHandlingException<TReceivePackageInfo> exception)
         {
             _logger.LogError(exception, $"Session[{session.SessionID}]: session exception.");
             return new ValueTask<bool>(true);
@@ -438,7 +445,8 @@ namespace SuperSocket.Server
 
             if (state != ServerState.None && state != ServerState.Stopped)
             {
-                throw new InvalidOperationException($"The server cannot be started right now, because its state is {state}.");
+                throw new InvalidOperationException(
+                    $"The server cannot be started right now, because its state is {state}.");
             }
 
             _state = ServerState.Starting;
@@ -484,7 +492,8 @@ namespace SuperSocket.Server
 
             if (state != ServerState.Started)
             {
-                throw new InvalidOperationException($"The server cannot be stopped right now, because its state is {state}.");
+                throw new InvalidOperationException(
+                    $"The server cannot be stopped right now, because its state is {state}.");
             }
 
             _state = ServerState.Stopping;
@@ -518,6 +527,7 @@ namespace SuperSocket.Server
         }
 
         #region IDisposable Support
+
         private bool disposedValue = false; // To detect redundant calls
 
         ValueTask IAsyncDisposable.DisposeAsync() => DisposeAsync(true);

@@ -112,6 +112,11 @@ namespace SuperSocket.ProtoBase
             return sb.ToString();
         }
 
+        public static int Write(this IBufferWriter<byte> writer, string text, Encoding encoding)
+        {
+            return writer.Write(text.ToCharArray(), encoding);
+        }
+
         public static int Write(this IBufferWriter<byte> writer, ReadOnlySpan<char> text, Encoding encoding)
         {
             var encoder = encoding.GetEncoder();
@@ -135,5 +140,25 @@ namespace SuperSocket.ProtoBase
 
             return totalBytes;
         }
+        
+        /*public static int Write(this IBufferWriter<byte> writer, ReadOnlySpan<char> text, Encoding encoding)
+        {
+            Encoder encoder = encoding.GetEncoder();
+            bool completed = false;
+            int num = 0;
+            int maxByteCount = encoding.GetMaxByteCount(1);
+            while (!completed)
+            {
+                Span<byte> span = writer.GetSpan(maxByteCount);
+                encoder.Convert(text, span, flush: false, out var charsUsed, out var bytesUsed, out completed);
+                if (charsUsed > 0)
+                {
+                    text = text.Slice(charsUsed);
+                }
+                num += bytesUsed;
+                writer.Advance(bytesUsed);
+            }
+            return num;
+        }*/
     }
 }

@@ -1,10 +1,9 @@
 using System;
-using System.Net.Sockets;
+using System.Net.Sockets.Net40;
 using System.Threading.Tasks;
 using System.Threading;
 using SuperSocket.Connection;
 using Microsoft.Extensions.Logging;
-using System.Security.Authentication;
 using SuperSocket.Server.Abstractions;
 using SuperSocket.Server.Abstractions.Connections;
 

@@ -21,7 +21,7 @@ namespace CommandServer
                     commandOptions.AddCommand<ADD>();
                     commandOptions.AddCommand<MULT>();
                     commandOptions.AddCommand<SUB>();
-                
+
                     // register all commands in one aassembly
                     //commandOptions.AddCommandAssembly(typeof(SUB).GetTypeInfo().Assembly);
                 })

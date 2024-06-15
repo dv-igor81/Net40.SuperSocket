@@ -2,10 +2,9 @@ using System;
 using System.Buffers;
 using System.Threading.Tasks;
 using System.IO;
-using System.Net.Sockets;
-using System.Net;
+using System.Net.Sockets.Net40;
+using System.Net.Net40;
 using System.Threading;
-using SuperSocket.ProtoBase;
 
 namespace SuperSocket.Connection
 {

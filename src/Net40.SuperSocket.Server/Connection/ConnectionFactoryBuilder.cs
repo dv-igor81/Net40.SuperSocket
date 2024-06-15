@@ -1,7 +1,6 @@
 using System;
 using System.Net;
-using System.Net.Sockets;
-using SuperSocket.ProtoBase;
+using System.Net.Sockets.Net40;
 using SuperSocket.Connection;
 using SuperSocket.Server.Abstractions;
 using SuperSocket.Server.Abstractions.Connections;

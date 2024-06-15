@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
+            Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{21231D77-F108-4C5D-A9E3-F4A5F4F5CCEE}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>Net40.SuperSocket.WebSocket.Server</RootNamespace>
+        <AssemblyName>Net40.SuperSocket.WebSocket.Server</AssemblyName>
+        <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="System"/>
+        <Reference Include="System.Core"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="CommandSubProtocolHandler.cs" />
+        <Compile Include="DelegateSubProtocolHandler.cs" />
+        <Compile Include="Extensions\Compression\WebSocketPerMessageCompressionExtensionFactory.cs" />
+        <Compile Include="Extensions\IWebSocketExtensionFactory.cs" />
+        <Compile Include="HandshakeOptions.cs" />
+        <Compile Include="ISubProtocolHandler.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="SubProtocolHandlerBase.cs" />
+        <Compile Include="WebSocketCommandMiddleware.cs" />
+        <Compile Include="WebSocketHostBuilder.cs" />
+        <Compile Include="WebSocketHostBuilderExtensions.cs" />
+        <Compile Include="WebSocketPackageHandler.cs" />
+        <Compile Include="WebSocketServerMiddleware.cs" />
+        <Compile Include="WebSocketSession.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Net40.PlatformExtension\src\Net40.Microsoft.Extensions.Configuration.Abstractions\Net40.Microsoft.Extensions.Configuration.Abstractions.csproj">
+        <Project>{a872ecc2-e8d5-4b78-a4ef-56d56dfacb40}</Project>
+        <Name>Net40.Microsoft.Extensions.Configuration.Abstractions</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.PlatformExtension\src\Net40.Microsoft.Extensions.Configuration.Binder\Net40.Microsoft.Extensions.Configuration.Binder.csproj">
+        <Project>{aecf62dc-4926-4d7c-8f36-ad3455fdf443}</Project>
+        <Name>Net40.Microsoft.Extensions.Configuration.Binder</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.PlatformExtension\src\Net40.Microsoft.Extensions.DependencyInjection.Abstractions\Net40.Microsoft.Extensions.DependencyInjection.Abstractions.csproj">
+        <Project>{078c84cd-4107-439c-82d0-3624544e89e2}</Project>
+        <Name>Net40.Microsoft.Extensions.DependencyInjection.Abstractions</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.PlatformExtension\src\Net40.Microsoft.Extensions.Hosting.Abstractions\Net40.Microsoft.Extensions.Hosting.Abstractions.csproj">
+        <Project>{caf1427c-8912-46c0-accc-ecba8949e37e}</Project>
+        <Name>Net40.Microsoft.Extensions.Hosting.Abstractions</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.PlatformExtension\src\Net40.Microsoft.Extensions.Logging.Abstractions\Net40.Microsoft.Extensions.Logging.Abstractions.csproj">
+        <Project>{f0ecdf34-47a1-4b02-919c-3369477f16dc}</Project>
+        <Name>Net40.Microsoft.Extensions.Logging.Abstractions</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.PlatformExtension\src\Net40.Microsoft.Extensions.Options.ConfigurationExtensions\Net40.Microsoft.Extensions.Options.ConfigurationExtensions.csproj">
+        <Project>{ab9a3b6a-6374-49d3-8c7f-cda1d75d2ca5}</Project>
+        <Name>Net40.Microsoft.Extensions.Options.ConfigurationExtensions</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.PlatformExtension\src\Net40.Microsoft.Extensions.Options\Net40.Microsoft.Extensions.Options.csproj">
+        <Project>{89fe2a62-6d84-4281-86dc-83953f4eb84e}</Project>
+        <Name>Net40.Microsoft.Extensions.Options</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.System.Private.CoreLib\src\Net40.System.IO.Pipelines\Net40.System.IO.Pipelines.csproj">
+        <Project>{8989574a-b425-4d9a-ad08-e1104e05614e}</Project>
+        <Name>Net40.System.IO.Pipelines</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.System.Private.CoreLib\src\Net40.System.Net.Sockets\Net40.System.Net.Sockets.csproj">
+        <Project>{d6cbc98e-b6e4-4e14-b271-2ab743589f9e}</Project>
+        <Name>Net40.System.Net.Sockets</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.System.Private.CoreLib\src\Net40.System.Private.CoreLib\Net40.System.Private.CoreLib.csproj">
+        <Project>{0be8ac03-9637-4be1-8552-086be1bde21a}</Project>
+        <Name>Net40.System.Private.CoreLib</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.Theraot.Core\src\Net40.Theraot.Core\Net40.Theraot.Core.csproj">
+        <Project>{868d7589-87b6-47ad-8cc6-e4f856199ff2}</Project>
+        <Name>Net40.Theraot.Core</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\Net40.SuperSocket.Command\Net40.SuperSocket.Command.csproj">
+        <Project>{65569280-3b85-489c-a998-ab182b0650bd}</Project>
+        <Name>Net40.SuperSocket.Command</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\Net40.SuperSocket.Connection\Net40.SuperSocket.Connection.csproj">
+        <Project>{5cfc9c33-4fe7-4b68-b140-4490471cfc5d}</Project>
+        <Name>Net40.SuperSocket.Connection</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\Net40.SuperSocket.Primitives\Net40.SuperSocket.Primitives.csproj">
+        <Project>{829cc9e1-5dce-44a0-807b-bf4dcf4fffa8}</Project>
+        <Name>Net40.SuperSocket.Primitives</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\Net40.SuperSocket.ProtoBase\Net40.SuperSocket.ProtoBase.csproj">
+        <Project>{3a1108ff-afbe-4f32-9455-676d413b1883}</Project>
+        <Name>Net40.SuperSocket.ProtoBase</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\Net40.SuperSocket.Server.Abstractions\Net40.SuperSocket.Server.Abstractions.csproj">
+        <Project>{0e62eab3-8489-48fc-b892-c1efc0e53973}</Project>
+        <Name>Net40.SuperSocket.Server.Abstractions</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\Net40.SuperSocket.Server\Net40.SuperSocket.Server.csproj">
+        <Project>{e6eb66ec-80c4-42c6-8471-6ac4678f5e0b}</Project>
+        <Name>Net40.SuperSocket.Server</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\Net40.SuperSocket.WebSocket\Net40.SuperSocket.WebSocket.csproj">
+        <Project>{0131238f-6d1e-4db6-97c2-d6da9c4216f1}</Project>
+        <Name>Net40.SuperSocket.WebSocket</Name>
+      </ProjectReference>
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+
+</Project>

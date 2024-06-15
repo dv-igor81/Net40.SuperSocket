@@ -91,6 +91,14 @@
         <Project>{f0ecdf34-47a1-4b02-919c-3369477f16dc}</Project>
         <Name>Net40.Microsoft.Extensions.Logging.Abstractions</Name>
       </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.System.Private.CoreLib\src\Net40.System.Net.Primitives\Net40.System.Net.Primitives.csproj">
+        <Project>{c0e64cc2-926e-4dd4-a778-41153127c317}</Project>
+        <Name>Net40.System.Net.Primitives</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\Net40.System.Private.CoreLib\src\Net40.System.Net.Sockets\Net40.System.Net.Sockets.csproj">
+        <Project>{d6cbc98e-b6e4-4e14-b271-2ab743589f9e}</Project>
+        <Name>Net40.System.Net.Sockets</Name>
+      </ProjectReference>
       <ProjectReference Include="..\..\..\Net40.System.Private.CoreLib\src\Net40.System.Private.CoreLib\Net40.System.Private.CoreLib.csproj">
         <Project>{0be8ac03-9637-4be1-8552-086be1bde21a}</Project>
         <Name>Net40.System.Private.CoreLib</Name>

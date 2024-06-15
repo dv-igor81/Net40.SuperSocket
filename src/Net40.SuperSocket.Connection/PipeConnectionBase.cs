@@ -129,18 +129,15 @@ namespace SuperSocket.Connection
 
         public override async ValueTask CloseAsync(CloseReason closeReason)
         {
-            // CloseReason = closeReason;
-            // Cancel();
-            // await HandleClosing().ConfigureAwait(false);
-            PipeConnectionBase pipeConnectionBase = this;
-            pipeConnectionBase.CloseReason = closeReason;
-            pipeConnectionBase.Cancel();
-            await pipeConnectionBase.HandleClosing().ConfigureAwait(false);
+            CloseReason = closeReason;
+            Cancel();
+            await HandleClosing().ConfigureAwait(false);
         }
 
         protected void Cancel()
         {
-            _cts.Cancel();
+            //_cts.Cancel();
+            _cts.Cancel(true);
         }
 
         protected virtual bool IsIgnorableException(Exception e)

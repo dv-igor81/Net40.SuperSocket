@@ -2,11 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Sockets;
+using System.Net.Sockets.Net40;
 using System.Threading;
 using System.Threading.Tasks;
 using SuperSocket.Connection;
-using SuperSocket.ProtoBase;
 using SuperSocket.Server.Abstractions;
 using SuperSocket.Server.Abstractions.Connections;
 
